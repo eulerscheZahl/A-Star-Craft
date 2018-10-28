@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Robot {
-    private static int globalId = 0;
+    public static int globalId = 0;
     public int id;
     public Cell cell;
     public int direction;

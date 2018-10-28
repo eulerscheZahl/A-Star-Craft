@@ -29,6 +29,9 @@ import com.google.inject.Inject;
 
 public class Referee extends AbstractReferee {
 
+    public static int score = 0;
+    public static String solution;
+
     private static final Pattern INTEGER_PATTERN = Pattern.compile("^[0-9][0-9]?$");
     private static final Pattern ACTION_PATTERN = Pattern.compile("^[URDL]$");
     private static final Pattern INPUT_PATTERN = Pattern.compile("^[.#URDLurdl]{190}$");
@@ -129,6 +132,7 @@ public class Referee extends AbstractReferee {
                     manager.addToGameSummary("No output");
                 } else {
                     String[] output = outputs.get(0).trim().split(" ");
+                    solution = outputs.get(0);
 
                     for (int i = 0; i < output.length; i += 3) {
                         if (output.length <= i + 2) {
@@ -206,6 +210,7 @@ public class Referee extends AbstractReferee {
 
             if (engine.robots.isEmpty()) {
                 manager.winGame("Score: " + engine.score);
+                score = engine.score;
             }
 
             forceNewFrame();
